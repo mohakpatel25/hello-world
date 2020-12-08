@@ -34,7 +34,11 @@ public class Dog {
 		 * For example, maybe within a span of time, img is reference img1 half the time and referencing img2 the other half.
 		 * You will need to code it so that the animation looks as natural as possible. 
 		 */
-
+if((int)(Math.random()*(2)+1) > 1) {
+	img = img1;
+} else {
+	img = img2;
+}
 		
 		g2.drawImage(img, tx, null);   
 	}
