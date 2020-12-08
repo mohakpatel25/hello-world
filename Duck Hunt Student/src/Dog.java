@@ -6,19 +6,38 @@ import java.awt.geom.AffineTransform;
 import java.net.URL;
 
 public class Dog {
-	private int x = 0,y = 180;
+	private int x = 0,y = 800;
 	private Image img1; // image of the frog
 	private Image img2;
 	private Image img;
 	private AffineTransform tx = AffineTransform.getTranslateInstance(x, y);
-
+private int missed = 0;
 	public Dog() {
 		img1 = getImage("dog1.png"); //load the image for Tree
 		img2 = getImage("dog2.png");
 		img = img1;
 		init(x, y); 				//initialize the location of the image
 	}
-	
+	public void setMissed(int pMissed) {
+		missed += pMissed;
+		System.out.println(missed);
+	}
+	public void showDog() {
+	x = 0;
+	y = 180;
+	tx.setToTranslation(x, y);
+	}
+	public boolean youMissed() {
+		if(missed == 3) {
+			return true;
+		}
+		return false;
+	}
+	public void hideDog() {
+		x = 0;
+		y = 6969;
+		tx.setToTranslation(x, y);
+	}
 	public void paint(Graphics g) {
 		
 		//these are the 2 lines of code needed draw an image on the screen

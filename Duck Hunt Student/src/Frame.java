@@ -79,12 +79,22 @@ dog.paint(g);
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		double clickedX = arg0.getX();
-		double clickedY =arg0.getY();
-		//send mouse x and y to the duck object's collision codes
-		duck.collide(clickedX, clickedY);
-		
+				
+	if(duck.collide(arg0.getX(), arg0.getY())) {
 		bang.play();
+		dog.hideDog();
+	}else if (!duck.collide(arg0.getX(), arg0.getY())) {
+		dog.setMissed(1);
+	}
+		if (dog.youMissed()) {
+			dog.showDog();
+			
+			missed.play();
+		}else {
+			dog.hideDog();
+		}
+		
+		
 	}
 
 	@Override
